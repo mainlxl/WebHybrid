@@ -9,7 +9,7 @@ import android.webkit.WebView;
  * JAVA调用JS
  */
 public class JSCall {
-    private static final String JAVA_SCRIPT = "javascript:%s(%s);";
+    private static final String JAVA_SCRIPT = "javascript:%s(%s)";
 
     public static String obtainCallCMD(String functionName, String param) {
         return String.format(JAVA_SCRIPT, functionName, param);

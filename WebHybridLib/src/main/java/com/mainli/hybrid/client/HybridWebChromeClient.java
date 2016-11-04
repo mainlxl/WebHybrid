@@ -10,10 +10,10 @@ import com.mainli.hybrid.interaction.Interceptor;
  * Created by Mainli on 2016/11/2.
  */
 
-public class HybrideWebChromeClient extends WebChromeClient {
+public class HybridWebChromeClient extends WebChromeClient {
     Interceptor mWebHelper;
 
-    public HybrideWebChromeClient(Interceptor webHelper) {
+    public HybridWebChromeClient(Interceptor webHelper) {
         mWebHelper = webHelper;
     }
 

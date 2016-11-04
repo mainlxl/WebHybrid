@@ -6,8 +6,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 
-import com.mainli.hybrid.client.HyBrideWebClient;
-import com.mainli.hybrid.client.HybrideWebChromeClient;
+import com.mainli.hybrid.client.HybridWebClient;
+import com.mainli.hybrid.client.HybridWebChromeClient;
 import com.mainli.hybrid.interaction.Interceptor;
 
 
@@ -25,7 +25,7 @@ public class QuickConfigWebViewHelper {
                 return true;
             }
         });//屏蔽掉长按事件 因为webview长按时将会调用系统的复制控件
-        webView.setWebViewClient(new HyBrideWebClient(helper) {
+        webView.setWebViewClient(new HybridWebClient(helper) {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 mProgressBar.setVisibility(View.VISIBLE);
@@ -39,7 +39,7 @@ public class QuickConfigWebViewHelper {
                 super.onPageFinished(view, url);
             }
         });
-        webView.setWebChromeClient(new HybrideWebChromeClient(helper) {
+        webView.setWebChromeClient(new HybridWebChromeClient(helper) {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);

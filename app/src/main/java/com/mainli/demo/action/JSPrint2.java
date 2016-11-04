@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.text.TextUtils;
 import android.webkit.WebView;
 
+import com.google.gson.Gson;
+import com.mainli.demo.response.RootResponse;
+import com.mainli.demo.response.WebResultState;
 import com.mainli.hybrid.javajs.JSAction;
 import com.mainli.hybrid.javajs.JSCall;
 
@@ -19,7 +22,9 @@ public class JSPrint2 implements JSAction {
         System.out.println("Js传来参数" + param);
         String call = param.get("call");
         if (TextUtils.isEmpty(call)) call = "call";
-        JSCall.executeJavaScript(webView, call, param.get("alert"));
+        RootResponse<Object> objectRootResponse = new RootResponse<>(WebResultState.OK);
+        objectRootResponse.setResult(param.get("alert"));
+        JSCall.executeJavaScript(webView, call, new Gson().toJson(objectRootResponse));
     }
 
     @Override

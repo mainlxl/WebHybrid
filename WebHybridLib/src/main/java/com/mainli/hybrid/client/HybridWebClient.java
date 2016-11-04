@@ -12,10 +12,10 @@ import java.net.URLDecoder;
  * Created by Mainli on 2016/11/2.
  */
 
-public class HyBrideWebClient extends WebViewClient {
+public class HybridWebClient extends WebViewClient {
     Interceptor mWebHelper;
 
-    public HyBrideWebClient(Interceptor webHelper) {
+    public HybridWebClient(Interceptor webHelper) {
         mWebHelper = webHelper;
     }
 

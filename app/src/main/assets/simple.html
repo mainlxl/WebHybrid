@@ -8,22 +8,17 @@
             prompt("client://name=按钮1");
         }
         function btn2() {
-            window.location.href="http://www.baidu.com?client://name=按钮2";
+            window.location.href = "http://www.baidu.com?client://name=按钮2";
         }
         function btn3() {
-            prompt("client://name=按钮3&alert=按钮3弹出&call1=call2");
+            prompt("client://name=按钮3&alert=按钮3弹出&call1=java2js");
         }
         function btn4() {
-            window.location.href="http://www.baidu.com?client://name=按钮4&alert=按钮4弹出来的&call=call";
+            window.location.href = "http://www.baidu.com?client://name=按钮4&alert=按钮4弹出来的&call=java2js";
         }
-        function call1(str) {
-            alert(str);
-        }
-        function call2(str) {
-            alert(str);
-        }
-        function call(str){
-        console.log(str);
+        function java2js(json) {
+            var message = JSON.stringify(json);
+            alert(message);
         }
 
 
@@ -32,11 +27,12 @@
         button {
             width: 200px;
             height: 100px;
-           font-size: 20px;
+            font-size: 20px;
         }
-       body {
+
+        body {
             flex: 1;
-            display:flex;
+            display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;

@@ -13,8 +13,8 @@ import android.widget.ProgressBar;
 
 import com.mainli.demo.action.JSPrint1;
 import com.mainli.demo.action.JSPrint2;
-import com.mainli.hybrid.client.HyBrideWebClient;
-import com.mainli.hybrid.client.HybrideWebChromeClient;
+import com.mainli.hybrid.client.HybridWebClient;
+import com.mainli.hybrid.client.HybridWebChromeClient;
 import com.mainli.hybrid.interaction.DistributManage;
 import com.mainli.hybrid.interaction.Interceptor;
 import com.mainli.hybrid.interaction.InterceptorConfig;
@@ -41,8 +41,21 @@ public class WebActivity extends AppCompatActivity implements DistributManage {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hybrid_web);
-        AndroidBug5497Workaround.assistActivity(this);
+        AndroidBug5497Workaround.assistActivity(this);//解决键盘遮盖问题
         initWebView();
+
+
+        WebView webView = null;
+
+
+        Interceptor interceptor = new Interceptor(this, new DistributManage() {
+            @Override
+            public JSAction onIntercept(HashMap<String, String> param) {
+                return null;
+            }
+        }, new InterceptorConfig());
+        webView.setWebChromeClient(new HybridWebChromeClient(interceptor));
+        webView.setWebViewClient(new HybridWebClient(interceptor));
     }
 
 
@@ -78,9 +91,7 @@ public class WebActivity extends AppCompatActivity implements DistributManage {
             WebView.setWebContentsDebuggingEnabled(true);
         //配置请求头
         //设置分发管理器
-        InterceptorConfig config = new InterceptorConfig();
-        System.out.println(config);
-        config(new Interceptor(this, this, config));
+        config(new Interceptor(this, this, new InterceptorConfig()));
     }
 
 
@@ -91,7 +102,7 @@ public class WebActivity extends AppCompatActivity implements DistributManage {
                 return true;
             }
         });//屏蔽掉长按事件 因为webview长按时将会调用系统的复制控件
-        mWebview.setWebViewClient(new HyBrideWebClient(helper) {
+        mWebview.setWebViewClient(new HybridWebClient(helper) {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 mProgressBar.setVisibility(View.VISIBLE);
@@ -105,7 +116,7 @@ public class WebActivity extends AppCompatActivity implements DistributManage {
                 super.onPageFinished(view, url);
             }
         });
-        mWebview.setWebChromeClient(new HybrideWebChromeClient(helper) {
+        mWebview.setWebChromeClient(new HybridWebChromeClient(helper) {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
