@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function btn1() {
+            prompt("client://name=按钮1");
+        }
+        function btn2() {
+            window.location.href="http://www.baidu.com?client://name=按钮2";
+        }
+        function btn3() {
+            prompt("client://name=按钮3&alert=按钮3弹出&call1=call2");
+        }
+        function btn4() {
+            window.location.href="http://www.baidu.com?client://name=按钮4&alert=按钮4弹出来的&call=call";
+        }
+        function call1(str) {
+            alert(str);
+        }
+        function call2(str) {
+            alert(str);
+        }
+        function call(str){
+        console.log(str);
+        }
+
+
+    </script>
+    <style>
+        button {
+            width: 200px;
+            height: 100px;
+           font-size: 20px;
+        }
+       body {
+            flex: 1;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+    </style>
+</head>
+<body>
+<button onclick="btn1()">prompt调用</button>
+<button onclick="btn2()">url调用</button>
+<button onclick="btn3()">prompt调用 - alert</button>
+<button onclick="btn4()">url调用 - alert</button>
+</body>
+</html>
