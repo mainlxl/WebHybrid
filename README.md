@@ -1,4 +1,7 @@
 #web - android 混合开发
+    1.集成简单   
+    2.支持配置自定义协议,使用正则截取参数放入HashMap<String, String> param   
+    3.js调用java两种方式
 
 ####一、js调用java层两种方式:
 
@@ -30,16 +33,16 @@
         }, new InterceptorConfig());//默认协议开头**client://**
         webView.setWebChromeClient(new HybridWebChromeClient(interceptor));
         webView.setWebViewClient(new HybridWebClient(interceptor));
-######2.自定义JsAction:
-        //实现JSAction接口  如:
+######2.自定义待分发JsAction
+    如:   
         public class JSPrint1 implements JSAction {
             @Override
-            public void executeJS(Activity activity, WebView webView, HashMap<String, String> param) {
+            public void executeJS(Activity activity, WebView webView, HashMap<String, String> param) {//运行JS请求
                 System.out.println("Js传来参数" + param);
                 String call = param.get("cal");
                 if (TextUtils.isEmpty(call)) call = "call";
                 Toast.makeText(activity, call, Toast.LENGTH_SHORT).show();
-                JSCall.executeJavaScript(webView, call, param.get("alert"));
+                JSCall.executeJavaScript(webView, call, param.get("alert"));//执行回调JS代码如果需要
             }
         
             @Override
@@ -49,14 +52,14 @@
         }
         
 ####二、高级用法自定义协议头:
-    默认协议为: **client://pram1="参数1"&pram2="参数2"&pram3="参数3"&pram4="参数4"......**
-    修改协议头在实例化InterceptorConfig时传入
+    默认协议为: client://key1="参数1"&key2="参数2"&key3="参数3"&key4="参数4"......
+    
+    修改协议头在实例化InterceptorConfig时传入。
     InterceptorConfig默认两个参数:
     //自定义请求协议头部
     public String mAgreementHead = "client://";
-    //截取参数正则表达式**建议不修改**
+    //截取参数正则表达式(建议不修改)
     public String mAgreementParamRegular = String.format("(?:%s|&)([^=^&]+)=([^&]*)", mAgreementHead);
     
-    
-    
+######suspension(一个RecyclerView头部悬停的Demo)与本项目无关
     
