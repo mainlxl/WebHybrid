@@ -7,6 +7,7 @@ js调用java层两种方式:
 java层调用
 
 集成步骤:
+
         //设置WebView属性，能够执行Javascript脚本
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
