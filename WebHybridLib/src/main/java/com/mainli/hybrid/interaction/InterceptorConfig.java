@@ -5,32 +5,31 @@ package com.mainli.hybrid.interaction;
  */
 public class InterceptorConfig {
     //自定义请求协议头部
-    public String agreementUrl = "client://";
+    public String mAgreementHead = "client://";
     //截取参数正则表达式
-    public String agreement_param = String.format("(?:%s|&)([^=^&]+)=([^&]*)", agreementUrl);
+    public String mAgreementParamRegular = String.format("(?:%s|&)([^=^&]+)=([^&]*)", mAgreementHead);
 
+    public InterceptorConfig() {
 
-    public String getAgreementUrl() {
-        return agreementUrl;
     }
 
-    public void setAgreementUrl(String agreementUrl) {
-        this.agreementUrl = agreementUrl;
+    public InterceptorConfig(String agreementHead) {
+        mAgreementHead = agreementHead;
     }
 
-    public String getAgreement_param() {
-        return agreement_param;
+    public String getAgreementHead() {
+        return mAgreementHead;
     }
 
-    public void setAgreement_param(String agreement_param) {
-        this.agreement_param = agreement_param;
+    public void setAgreementHead(String agreementHead) {
+        this.mAgreementHead = agreementHead;
     }
 
-    @Override
-    public String toString() {
-        return "InteractionConfig{" +
-                "agreementUrl='" + agreementUrl + '\'' +
-                ", agreement_param='" + agreement_param + '\'' +
-                '}';
+    public String getAgreementParamRegular() {
+        return mAgreementParamRegular;
+    }
+
+    public void setAgreementParamRegular(String agreementParamRegular) {
+        this.mAgreementParamRegular = agreementParamRegular;
     }
 }

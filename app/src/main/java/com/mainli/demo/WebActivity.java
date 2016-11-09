@@ -43,32 +43,6 @@ public class WebActivity extends AppCompatActivity implements DistributManage {
         setContentView(R.layout.activity_hybrid_web);
         AndroidBug5497Workaround.assistActivity(this);//解决键盘遮盖问题
         initWebView();
-
-
-        WebView webView = null;
-
-        //设置WebView属性，能够执行Javascript脚本
-        WebSettings settings = webView.getSettings();
-        settings.setJavaScriptEnabled(true);
-        //实例化拦截器 并加入分发管理器
-        Interceptor interceptor = new Interceptor(this, new DistributManage() {
-            @Override
-            public JSAction onIntercept(HashMap<String, String> param) {
-                String name = param.get("name");
-                JSAction jsAction = null;
-                switch (name) {
-                    case "按钮1":
-                        jsAction = new JSPrint1();
-                        break;
-                    case "按钮2":
-                        jsAction = new JSPrint2();
-                        break;
-                }
-                return jsAction;
-            }
-        }, new InterceptorConfig());
-        webView.setWebChromeClient(new HybridWebChromeClient(interceptor));
-        webView.setWebViewClient(new HybridWebClient(interceptor));
     }
 
 

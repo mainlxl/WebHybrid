@@ -1,34 +1,62 @@
-web - android »ìºÏ¿ª·¢
+#web - android æ··åˆå¼€å‘
 
-jsµ÷ÓÃjava²ãÁ½ÖÖ·½Ê½:
-1.Ö±½ÓÔÚURLºóÃæ¼ÓÉÏ×Ô¶¨ÒåĞ­Òé
-2.ÔÚjsÖĞÊ¹ÓÃPromptÌáÊ¾¿ò
+####ä¸€ã€jsè°ƒç”¨javaå±‚ä¸¤ç§æ–¹å¼:
 
-java²ãµ÷ÓÃ
+    1.ç›´æ¥åœ¨URLåé¢åŠ ä¸Šè‡ªå®šä¹‰åè®®
+    2.åœ¨jsä¸­ä½¿ç”¨Promptæç¤ºæ¡†
 
-¼¯³É²½Öè:
+####äºŒã€javaå±‚é›†æˆ:
 
-        //ÉèÖÃWebViewÊôĞÔ£¬ÄÜ¹»Ö´ĞĞJavascript½Å±¾
+######1.é›†æˆæ­¥éª¤:
+        //è®¾ç½®WebViewå±æ€§ï¼Œèƒ½å¤Ÿæ‰§è¡ŒJavascriptè„šæœ¬
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
-        //ÊµÀı»¯À¹½ØÆ÷ ²¢¼ÓÈë·Ö·¢¹ÜÀíÆ÷
+        //å®ä¾‹åŒ–æ‹¦æˆªå™¨ å¹¶åŠ å…¥åˆ†å‘ç®¡ç†å™¨
         Interceptor interceptor = new Interceptor(this, new DistributManage() {
             @Override
             public JSAction onIntercept(HashMap<String, String> param) {
                 String name = param.get("name");
                 JSAction jsAction = null;
                 switch (name) {
-                    case "°´Å¥1":
+                    case "æŒ‰é’®1":
                         jsAction = new JSPrint1();
                         break;
-                    case "°´Å¥2":
+                    case "æŒ‰é’®2":
                         jsAction = new JSPrint2();
                         break;
                 }
                 return jsAction;
             }
-        }, new InterceptorConfig());
-        //¿ªÆôPromptÌáÊ¾¿òÀ¹½Ø
+        }, new InterceptorConfig());//é»˜è®¤åè®®å¼€å¤´**client://**
         webView.setWebChromeClient(new HybridWebChromeClient(interceptor));
-        //¿ªÆôURLÀ¹½Ø
         webView.setWebViewClient(new HybridWebClient(interceptor));
+######2.è‡ªå®šä¹‰JsAction:
+        //å®ç°JSActionæ¥å£  å¦‚:
+        public class JSPrint1 implements JSAction {
+            @Override
+            public void executeJS(Activity activity, WebView webView, HashMap<String, String> param) {
+                System.out.println("Jsä¼ æ¥å‚æ•°" + param);
+                String call = param.get("cal");
+                if (TextUtils.isEmpty(call)) call = "call";
+                Toast.makeText(activity, call, Toast.LENGTH_SHORT).show();
+                JSCall.executeJavaScript(webView, call, param.get("alert"));
+            }
+        
+            @Override
+            public boolean needJSBeforeRun(HashMap<String, String> param) {//åˆ¤æ–­æ˜¯å¦éœ€è¦æ‰§è¡ŒJSå›è°ƒä¹‹å‰æ—¶å€™æ‰§è¡Œä¸€ä¸ªå›è°ƒ å¦‚è·å–ç”¨æˆ·ä¿¡æ¯å‰éœ€è¦ç™»å½•çš„æ“ä½œ
+                return false;
+            }
+        }
+        
+####äºŒã€é«˜çº§ç”¨æ³•è‡ªå®šä¹‰åè®®å¤´:
+    é»˜è®¤åè®®ä¸º: **client://pram1="å‚æ•°1"&pram2="å‚æ•°2"&pram3="å‚æ•°3"&pram4="å‚æ•°4"......**
+    ä¿®æ”¹åè®®å¤´åœ¨å®ä¾‹åŒ–InterceptorConfigæ—¶ä¼ å…¥
+    InterceptorConfigé»˜è®¤ä¸¤ä¸ªå‚æ•°:
+    //è‡ªå®šä¹‰è¯·æ±‚åè®®å¤´éƒ¨
+    public String mAgreementHead = "client://";
+    //æˆªå–å‚æ•°æ­£åˆ™è¡¨è¾¾å¼**å»ºè®®ä¸ä¿®æ”¹**
+    public String mAgreementParamRegular = String.format("(?:%s|&)([^=^&]+)=([^&]*)", mAgreementHead);
+    
+    
+    
+    

@@ -56,7 +56,7 @@ public final class Interceptor {
 
     //截取URL上参数
     private HashMap<String, String> getParam4URL(String url) {
-        Matcher matcher = Pattern.compile(this.mConfig.getAgreement_param()).matcher(url);
+        Matcher matcher = Pattern.compile(this.mConfig.getAgreementParamRegular()).matcher(url);
         HashMap<String, String> param = new HashMap<>();
         while (matcher.find()) param.put(matcher.group(1), matcher.group(2));
         return param;
@@ -64,6 +64,6 @@ public final class Interceptor {
 
     //判断是否拦截
     public boolean isIntercept(String url) {
-        return Pattern.compile(this.mConfig.getAgreementUrl()).matcher(url).find();
+        return Pattern.compile(this.mConfig.getAgreementHead()).matcher(url).find();
     }
 }
