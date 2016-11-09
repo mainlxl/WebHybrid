@@ -1,1 +1,1 @@
-include ':app', ':WebHybridLib'
+include ':app', ':WebHybridLib', ':suspension'
