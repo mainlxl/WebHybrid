@@ -1,6 +1,7 @@
 package com.mainli.suspension;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,7 +31,18 @@ public class MainActivity extends AppCompatActivity {
             titles.add("分组" + i);
         }
         titleView.setText(titles.get(0) + "0");
-        recyclerView.setAdapter(new RecyclerView.Adapter() {
+        recyclerView.setAdapter(getAdapter(list, titles));
+        recyclerView.addOnScrollListener(new RVHeadSuspensionListener<TextView>(titleView, new RVHeadSuspensionListener.ResetViewDataListener<TextView>() {
+            @Override
+            public void onResetView(RecyclerView recyclerView, TextView textView, int itemPosition) {
+                textView.setText(titles.get(itemPosition / 11) + "0");
+            }
+        }));
+    }
+
+    @NonNull
+    private RecyclerView.Adapter getAdapter(final List<User> list, final List<String> titles) {
+        return new RecyclerView.Adapter() {
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                 View view = null;
@@ -63,12 +75,6 @@ public class MainActivity extends AppCompatActivity {
             public int getItemViewType(int position) {
                 return position % 11 == 0 && position / 11 < titles.size() ? 0 : 1;
             }
-        });
-        recyclerView.addOnScrollListener(new RVHeadSuspensionListener<TextView>(titleView, new RVHeadSuspensionListener.ResetViewDataListener<TextView>() {
-            @Override
-            public void onResetView(RecyclerView recyclerView, TextView textView, int itemPosition) {
-                textView.setText(titles.get(itemPosition / 11) + "0");
-            }
-        }));
+        };
     }
 }
