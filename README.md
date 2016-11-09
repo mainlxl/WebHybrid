@@ -30,7 +30,7 @@
                 }
                 return jsAction;
             }
-        }, new InterceptorConfig());//默认协议开头**client://**
+        }, new InterceptorConfig());//默认协议开头client://
         webView.setWebChromeClient(new HybridWebChromeClient(interceptor));
         webView.setWebViewClient(new HybridWebClient(interceptor));
 ######2.自定义待分发JsAction
