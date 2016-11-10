@@ -13,6 +13,10 @@ import android.webkit.WebView;
 import android.widget.ProgressBar;
 
 import com.mainli.hybrid.R;
+import com.mainli.hybrid.interaction.DistributManage;
+import com.mainli.hybrid.interaction.Interceptor;
+import com.mainli.hybrid.utils.AndroidBug5497Workaround;
+import com.mainli.hybrid.utils.QuickConfigWebViewHelper;
 
 /**
  * Created by Mainli on 2016/11/2.

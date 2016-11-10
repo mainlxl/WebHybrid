@@ -4,6 +4,8 @@ import android.webkit.JsPromptResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
+import com.mainli.hybrid.interaction.Interceptor;
+
 /**
  * Created by Mainli on 2016/11/2.
  */

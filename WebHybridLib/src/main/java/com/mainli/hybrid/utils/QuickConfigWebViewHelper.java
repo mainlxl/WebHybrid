@@ -8,6 +8,7 @@ import android.widget.ProgressBar;
 
 import com.mainli.hybrid.client.HybridWebChromeClient;
 import com.mainli.hybrid.client.HybridWebClient;
+import com.mainli.hybrid.interaction.Interceptor;
 
 public class QuickConfigWebViewHelper {
     WebSettings mWebSettings;
