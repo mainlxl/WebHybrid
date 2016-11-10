@@ -2,7 +2,7 @@
     1.集成简单   
     2.支持配置自定义协议,使用正则截取参数放入HashMap<String, String> param   
     3.js调用java两种方式
-
+ ![效果图](./效果图1.gif)
 ####一、js调用java层两种方式:
 
     1.直接在URL后面加上自定义协议
