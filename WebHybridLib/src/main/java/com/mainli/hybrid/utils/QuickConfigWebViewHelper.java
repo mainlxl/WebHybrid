@@ -6,14 +6,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 
-import com.mainli.hybrid.client.HybridWebClient;
 import com.mainli.hybrid.client.HybridWebChromeClient;
-import com.mainli.hybrid.interaction.Interceptor;
-
-
-/**
- * Created by Mainli on 2016/11/2.
- */
+import com.mainli.hybrid.client.HybridWebClient;
 
 public class QuickConfigWebViewHelper {
     WebSettings mWebSettings;

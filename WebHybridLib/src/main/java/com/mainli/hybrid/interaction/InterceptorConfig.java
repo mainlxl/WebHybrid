@@ -1,8 +1,5 @@
 package com.mainli.hybrid.interaction;
 
-/**
- * Created by Mainli on 2016/11/2.
- */
 public class InterceptorConfig {
     //自定义请求协议头部
     public String mAgreementHead = "client://";

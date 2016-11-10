@@ -2,7 +2,6 @@ package com.mainli.hybrid.interaction;
 
 
 import android.app.Activity;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.webkit.WebView;
 
@@ -23,16 +22,16 @@ public final class Interceptor {
     private Activity mActivity;
     private InterceptorConfig mConfig;
 
-    public Interceptor(Activity activity, @NonNull DistributManage listener) {
+    public Interceptor(Activity activity,  DistributManage listener) {
         this(activity, listener, null, new InterceptorConfig());
     }
 
-    public Interceptor(Activity activity, @NonNull DistributManage listener, InterceptorConfig config) {
+    public Interceptor(Activity activity,  DistributManage listener, InterceptorConfig config) {
         this(activity, listener, null, config);
     }
 
 
-    public Interceptor(Activity activity, @NonNull DistributManage listener, OnJSBeforeRun jSBeforeRun, InterceptorConfig config) {
+    public Interceptor(Activity activity,  DistributManage listener, OnJSBeforeRun jSBeforeRun, InterceptorConfig config) {
         this.mListener = listener;
         this.mActivity = activity;
         this.mJSBeforeRun = jSBeforeRun;

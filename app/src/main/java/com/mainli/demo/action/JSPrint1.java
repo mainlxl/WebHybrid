@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-import com.mainli.hybrid.javajs.JSAction;
 import com.mainli.hybrid.javajs.JSCall;
 
 import java.util.HashMap;

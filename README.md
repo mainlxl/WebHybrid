@@ -1,7 +1,13 @@
 #web - android 混合开发
     1.集成简单   
     2.支持配置自定义协议,使用正则截取参数放入HashMap<String, String> param   
-    3.js调用java两种方式
+    3.js调用java两种方式,如:
+        function btn3() {
+              prompt("client://name=按钮3&alert=按钮3弹出&call1=java2js");
+        }
+        function btn4() {
+              window.location.href = "http://www.baidu.com?client://name=按钮4&alert=按钮4弹出来的&call=java2js";
+        }
  ![效果图](./效果图1.gif)
 ####一、js调用java层两种方式:
 

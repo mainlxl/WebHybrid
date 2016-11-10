@@ -15,11 +15,6 @@ import com.mainli.demo.action.JSPrint1;
 import com.mainli.demo.action.JSPrint2;
 import com.mainli.hybrid.client.HybridWebClient;
 import com.mainli.hybrid.client.HybridWebChromeClient;
-import com.mainli.hybrid.interaction.DistributManage;
-import com.mainli.hybrid.interaction.Interceptor;
-import com.mainli.hybrid.interaction.InterceptorConfig;
-import com.mainli.hybrid.javajs.JSAction;
-import com.mainli.hybrid.utils.AndroidBug5497Workaround;
 
 import java.util.HashMap;
 

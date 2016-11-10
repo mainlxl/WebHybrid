@@ -1,10 +1,10 @@
-package com.mainli.hybrid.ui;
+package com.mainli.demo;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +13,6 @@ import android.webkit.WebView;
 import android.widget.ProgressBar;
 
 import com.mainli.hybrid.R;
-import com.mainli.hybrid.interaction.DistributManage;
-import com.mainli.hybrid.interaction.Interceptor;
-import com.mainli.hybrid.utils.AndroidBug5497Workaround;
-import com.mainli.hybrid.utils.QuickConfigWebViewHelper;
 
 /**
  * Created by Mainli on 2016/11/2.
@@ -28,12 +24,12 @@ public class QuickWebHybridFragment extends Fragment {
     WebView mWebview;
 
     public static QuickWebHybridFragment create(Activity activity, String url, @Nullable DistributManage manage) {
-        QuickWebHybridFragment webHybridFragment = new QuickWebHybridFragment();
+        QuickWebHybridFragment quickWebHybridFragment = new QuickWebHybridFragment();
         Bundle args = new Bundle();
         args.putString(WEB_ACTION, url);
-        webHybridFragment.setArguments(args);
-        webHybridFragment.setInterceptor(new Interceptor(activity, manage));
-        return webHybridFragment;
+        quickWebHybridFragment.setArguments(args);
+        quickWebHybridFragment.setInterceptor(new Interceptor(activity, manage));
+        return quickWebHybridFragment;
     }
 
     public void setInterceptor(Interceptor interceptor) {

@@ -3,8 +3,6 @@ package com.mainli.hybrid.client;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.mainli.hybrid.interaction.Interceptor;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
