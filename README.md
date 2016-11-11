@@ -1,5 +1,6 @@
 #web - android 混合开发
-    1.集成简单:compile 'com.mainli:webhybrid:1.0.0'
+    1.集成简单: 
+        JCenter -> compile 'com.mainli:webhybrid:1.0.0'
         
     2.支持配置自定义协议,使用正则截取参数放入HashMap<String, String>
     
