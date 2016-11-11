@@ -17,7 +17,6 @@ import com.mainli.hybrid.client.HybridWebChromeClient;
 import com.mainli.hybrid.client.HybridWebClient;
 import com.mainli.hybrid.interaction.DistributManage;
 import com.mainli.hybrid.interaction.Interceptor;
-import com.mainli.hybrid.interaction.InterceptorConfig;
 import com.mainli.hybrid.javajs.JSAction;
 import com.mainli.hybrid.utils.AndroidBug5497Workaround;
 
@@ -78,7 +77,7 @@ public class WebActivity extends AppCompatActivity implements DistributManage {
             WebView.setWebContentsDebuggingEnabled(true);
         //配置请求头
         //设置分发管理器
-        config(new Interceptor(this, this, new InterceptorConfig()));
+        config(new Interceptor(this, this));
     }
 
 
