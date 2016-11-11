@@ -7,3 +7,8 @@
 /build
 /captures
 .externalNativeBuild
+WebHybridLib/libs/
+app/libs/
+appkey.text
+suspension/libs/
+suspension/src/main/res/drawable/

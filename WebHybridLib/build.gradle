@@ -17,6 +17,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
@@ -24,7 +27,7 @@ dependencies {
 publish {
     userOrg = 'mainli'
     groupId = 'com.mainli'
-    artifactId = 'bintray-release'
+    artifactId = 'webhybrid'
     publishVersion = '1.0.0'
     desc = 'Development of a hybrid app'
     website = 'https://github.com/Android-Mainli/WebHybrid'
