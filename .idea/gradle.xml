@@ -10,7 +10,6 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/WebHybridLib" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/suspension" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
